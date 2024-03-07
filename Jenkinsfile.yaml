@@ -6,25 +6,10 @@ pipeline:
         - checkout: scm
     - stage: Build
       steps:
-        - script:
-            code: |
-              try {
-                  bat 'javac Main.java'
-              } catch (Exception e) {
-                  echo "Erreur lors de la compilation : ${e.message}"
-                  error "Échec de la compilation"
-              }
+        - bat: 'javac Main.java'
     - stage: Test
       steps:
-        - script:
-            code: |
-              try {
-                  bat 'java Main'
-              } catch (Exception e) {
-                  echo "Erreur lors de l'exécution des tests : ${e.message}"
-                  error "Échec des tests"
-              }
+        - bat: 'java Main'
     - stage: Deploy
       steps:
         - echo: "Déploiement sur le serveur de production en cours"
-
