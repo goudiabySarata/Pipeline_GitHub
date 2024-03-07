@@ -9,7 +9,7 @@ pipeline:
         - script:
             code: |
               try {
-                  sh 'javac Main.java'
+                  bat 'javac Main.java'
               } catch (Exception e) {
                   echo "Erreur lors de la compilation : ${e.message}"
                   error "Échec de la compilation"
@@ -19,7 +19,7 @@ pipeline:
         - script:
             code: |
               try {
-                  sh 'java Main'
+                  bat 'java Main'
               } catch (Exception e) {
                   echo "Erreur lors de l'exécution des tests : ${e.message}"
                   error "Échec des tests"
