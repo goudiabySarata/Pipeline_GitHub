@@ -1,1 +1,30 @@
+pipeline:
+  agent: any
+  stages:
+    - stage: Checkout
+      steps:
+        - checkout: scm
+    - stage: Build
+      steps:
+        - script:
+            code: |
+              try {
+                  sh 'javac Main.java'
+              } catch (Exception e) {
+                  echo "Erreur lors de la compilation : ${e.message}"
+                  error "Échec de la compilation"
+              }
+    - stage: Test
+      steps:
+        - script:
+            code: |
+              try {
+                  sh 'java Main'
+              } catch (Exception e) {
+                  echo "Erreur lors de l'exécution des tests : ${e.message}"
+                  error "Échec des tests"
+              }
+    - stage: Deploy
+      steps:
+        - echo: "Déploiement sur le serveur de production en cours"
 
