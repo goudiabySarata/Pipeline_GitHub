@@ -10,13 +10,13 @@ pipeline {
         stage('Build') {
             steps {
                 // Compilation du code Java
-                bat 'javac HelloWorld.java'
+                bat 'javac Main.java'
             }
         }
         stage('Test') {
             steps {
                 // Exécution du code Java
-                bat 'java HelloWorld'
+                bat 'java Main'
             }
         }
         stage('Deploy') {
