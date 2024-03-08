@@ -1,5 +1,3 @@
-// @yaml
-
 pipeline:
   agent: any
   stages:
